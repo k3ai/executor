@@ -1,7 +1,6 @@
 package cmd
 
 import (
-<<<<<<< HEAD
 	"bufio"
 	"fmt"
 	"log"
@@ -121,47 +120,16 @@ var (
 				}
 			}
 
-=======
-	// "os"
-	// "fmt"
-
-	"github.com/spf13/cobra"
-)
-
-const cliName = "k3ai"
-
-var version bool
-
-var (
-	rootCmd = &cobra.Command{
-
-		Use:   cliName + "[options]",
-		Short: "K3ai is a very fast tool to run AI Infrastructure stacks",
-		// By default (no Run/RunE in parent command) for typos in subcommands, cobra displays the help of parent command but exit(0) !
-		RunE: func(cmd *cobra.Command, args []string) error {
-			if len(args) == 0 {
-				return cmd.Help()
-			}
-			if version {
-				return versionCommand().Execute()
-			}
-			_ = cmd.Help()
-			return nil
->>>>>>> 540ac7528167d5b9f51fac2cdc50f0d7291ddfed
 		},
 	}
 )
 
-<<<<<<< HEAD
 // Execute executes the root command.
-=======
->>>>>>> 540ac7528167d5b9f51fac2cdc50f0d7291ddfed
 func Execute() error {
 	return rootCmd.Execute()
 }
 
 func init() {
-<<<<<<< HEAD
 
 	rootCmd.Flags().StringVarP(&strURI, "source", "s", "", "URI of the code, can be either a remote URL in the minimal form as [https://{domain}/{owner}/{user}]")
 	rootCmd.Flags().StringVarP(&strBackend, "backend", "b", "", "Backend to be used may be only of one of the supported types [MLFLow,Kubeflow Pipelines (KFP),KFP DSL,Airflow,Argo,Tensorflow,Pytorch]")
@@ -218,20 +186,4 @@ func executionRun(strCmd string) error {
 	<-done
 	_ = cmd.Wait()
 	return err
-=======
-	cobra.OnInitialize()
-	rootCmd.CompletionOptions.DisableDefaultCmd = true
-	rootCmd.Flags().SortFlags = false
-	rootCmd.DisableFlagsInUseLine = true
-	rootCmd.PersistentFlags().BoolP("help", "h", false, "Help usage")
-	rootCmd.PersistentFlags().Lookup("help").Hidden = true
-	rootCmd.AddCommand(
-		upCommand(),
-		downCommand(),
-		clusterCommand(),
-		pluginCommand(),
-		runCommand(),
-		versionCommand(),
-	)
->>>>>>> 540ac7528167d5b9f51fac2cdc50f0d7291ddfed
 }
